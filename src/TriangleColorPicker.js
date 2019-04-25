@@ -199,10 +199,14 @@ export class TriangleColorPicker extends React.PureComponent {
         const { s, v } = this._computeColorFromTriangle({ x, y })
         this._changingHColor = s > 1 || s < 0 || v > 1 || v < 0
         handleColorChange({ x, y })
-        this.props.onTouch();
+        if(this.props.onTouch){
+          this.props.onTouch();
+        }
       },
       onEnd: () => {
-        this.props.onLeave();
+        if(this.props.onLeave){
+          this.props.onLeave();
+        }
       },
       onMove: handleColorChange,
     })
